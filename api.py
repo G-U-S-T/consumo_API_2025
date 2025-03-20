@@ -23,6 +23,9 @@ class API_Pokemon(API_consumer):
         except:
             pass
 
+
+# id, name, species
+
 class API_Rick_Morty(API_consumer):
     def __init__(self):
         self.__URL = 'https://rickandmortyapi.com/api/character/'
@@ -32,8 +35,17 @@ class API_Rick_Morty(API_consumer):
         return self.__URL
 
     def extract(self, id):
-    # Atividade 3, que resultará o segundo commit
-        pass
+        URL = self.URL + str(id)
+        try:
+            dado = requests.get(URL).json()
+            return ((dado.get('id'), dado.get('name'), dado.get('species')))
+        except :
+            pass
+
+# Atividade 3, que resultará o segundo commit
+
+
+#(name, [ film(s) ])
 
 class API_Star_Wars(API_consumer):
     ''' The universe of Star Wars '''
@@ -45,8 +57,15 @@ class API_Star_Wars(API_consumer):
         return self.__URL
 
     def extract(self, id):
-    # Atividade 4, que resultará o terceiro commit
-        pass
+        URL = self.URL + str(id)
+        try:
+            dado = requests.get(URL).json()
+            return ((dado.get('name'), dado.get('films')))
+        except :
+            pass
+
+
+#name, [ tvSeries ]
 
 class API_Ice_and_Fire(API_consumer):
     ''' The universe of Ice And Fire '''
@@ -58,6 +77,10 @@ class API_Ice_and_Fire(API_consumer):
         return self.__URL
 
     def extract(self, id):
-        # Atividade 5, que resultará o quarto commit
-        pass
+        URL = self.URL + str(id)
+        try:
+            dado = requests.get(URL).json()
+            return ((dado.get('name'), dado.get('tvSeries')))
+        except :
+            pass
  
